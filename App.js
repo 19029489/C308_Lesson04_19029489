@@ -57,8 +57,32 @@ class Eats extends React.Component {
       </Text>
     );
   }
-};
+}
 
+//Mini Project
+import mtz from 'moment-timezone';
+
+class Clock extends React.Component {
+  render() {
+    var time = mtz.tz(this.props.name).format(' - H:m Z');
+    return <Text>{this.props.name}{time}</Text>;
+  }
+}
+
+const WorldClock = () => {
+  return (
+      <Text>
+        {<Clock name="Asia/Singapore"/>}
+        {"\n"}
+        {<Clock name="Europe/London"/>}
+        {"\n"}
+        {<Clock name="America/New_York"/>}
+        {"\n"}
+        {<Clock name="Europe/Oslo"/>}
+        {"\n"}
+      </Text>
+  );
+};
 
 const App: () => React$Node = () => {
   console.log('Listing semester modules and recommended eats');
@@ -77,8 +101,8 @@ const App: () => React$Node = () => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Welcome/>
-              <MyFirstApp/>
+              <Welcome />
+              <MyFirstApp />
 
               <Text>{'\n'}My modules this semester:</Text>
               <SemModule day="Monday" modCode="C348" />
@@ -86,10 +110,19 @@ const App: () => React$Node = () => {
               <SemModule day="Friday" modCode="C308" />
 
               <Text>{'\n'}Recommended Eats @ RP</Text>
-              <Eats name="Sweet Tooth Waffles" location="W6 Level 1, E-canteen"/>
+              <Eats
+                name="Sweet Tooth Waffles"
+                location="W6 Level 1, E-canteen"
+              />
               <Eats name="Crowded Bowl" location="W4/W6 Lawn Canteen" />
-              <Eats name="Western Cuisine @ Koufu" location="E1 Level 1, Koufu"/>
+              <Eats
+                name="Western Cuisine @ Koufu"
+                location="E1 Level 1, Koufu"
+              />
               <Eats name="Ayam Penyet" location="W4/W6 Lawn Canteen" />
+
+              <Text>World Clock</Text>
+              <WorldClock/>
             </View>
           </View>
         </ScrollView>
